@@ -4,7 +4,6 @@ import Home from "./Home.js";
 import RouteError from "./RouteError.js";
 import Barbell from "./Barbell.js";
 import axios from "axios";
-import apiKey from "./config.js";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
