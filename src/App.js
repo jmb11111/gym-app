@@ -11,7 +11,7 @@ import "./App.css";
 class App extends Component {
   willIbeOnTime = location => {
     axios
-      .get(`https://fullrange-server.herokuapp.com/${location}`)
+      .get(`https://fullrange-server.herokuapp.com/trip-duration/${location}`)
       .then(response => {
         this.setState({ tripDuration: response.data.text });
       })
