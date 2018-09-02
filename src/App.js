@@ -4,9 +4,10 @@ import Home from "./Home.js";
 import RouteError from "./RouteError.js";
 import Barbell from "./Barbell.js";
 import axios from "axios";
-let apiKey = process.env.apiKei;
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+
+let apiKey = process.env.apiKei;
 
 class App extends Component {
   willIbeOnTime = () => {
