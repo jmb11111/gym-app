@@ -23,13 +23,14 @@ class Header extends Component {
                   className="logo
                                 rounded-circle img-fluid"
                   width="100"
+                  alt="logo"
                 />
               </a>
             </li>
           </ul>
           <ul className="nav navbar-nav ml-auto mr-md-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/something">
                 Aerobic
               </a>
             </li>
