@@ -17,7 +17,7 @@ class Header extends Component {
           </ul>
           <ul className="nav navbar-nav mx-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/">
                 <img
                   src="/download.png"
                   className="logo

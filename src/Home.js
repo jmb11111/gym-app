@@ -4,12 +4,6 @@ let location;
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(
-        "Latitude: " +
-          position.coords.latitude +
-          "<Longitude: " +
-          position.coords.longitude
-      );
       return (location =
         position.coords.latitude.toString() +
         "," +
@@ -21,13 +15,13 @@ function getLocation() {
 }
 
 class Home extends Component {
+  //gets location as soon as component loads
   componentDidMount() {
     getLocation();
   }
-
+  //stops page from refreshing on submit, runs onTime with current location parameters
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onTime(location);
   };
 
@@ -46,12 +40,12 @@ class Home extends Component {
             />
             <div className="card-body">
               <h5 className="card-title">Will I Make It?</h5>
-              <p className="card-text">ETA: {this.props.duration}</p>
-              <form className="" onSubmit={this.handleSubmit}>
-                <button type="submit" className="search-button">
+              <form className="mt-5" onSubmit={this.handleSubmit}>
+                <button type="submit" className="btn btn-primary">
                   Get ETA
                 </button>
               </form>
+              <p className="card-text mt-5">ETA: {this.props.duration}</p>
             </div>
           </div>
           <div className="card  col-lg-4  text-center">
