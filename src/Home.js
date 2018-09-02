@@ -1,11 +1,36 @@
 import React, { Component } from "react";
 import Header from "./Header.js";
+let location;
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(
+        "Latitude: " +
+          position.coords.latitude +
+          "<Longitude: " +
+          position.coords.longitude
+      );
+      return (location =
+        position.coords.latitude.toString() +
+        "," +
+        position.coords.longitude.toString());
+    });
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
 
 class Home extends Component {
+  componentDidMount() {
+    getLocation();
+  }
+
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onTime();
+
+    this.props.onTime(location);
   };
+
   render() {
     return (
       <div>
@@ -14,20 +39,17 @@ class Home extends Component {
           <div className="card col-lg-3   text-center">
             <img
               className="card-img-top img-fluid mt-2"
-              src="newmember.jpg"
+              src="trafficLight.jpg"
               height="285"
               width="285"
               alt="Card image cap"
             />
             <div className="card-body">
-              <h5 className="card-title">Newest Member</h5>
-              <p className="card-text">
-                Welcome Dennis, he recently moved down from Boston, be sure to
-                say hey!
-              </p>
+              <h5 className="card-title">Will I Make It?</h5>
+              <p className="card-text">ETA: {this.props.duration}</p>
               <form className="" onSubmit={this.handleSubmit}>
                 <button type="submit" className="search-button">
-                  Say Hey!
+                  Get ETA
                 </button>
               </form>
             </div>

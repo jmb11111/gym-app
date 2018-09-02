@@ -7,12 +7,13 @@ import axios from "axios";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+
 class App extends Component {
-  willIbeOnTime = () => {
+  willIbeOnTime = location => {
     axios
-      .get(`https://fullrange-server.herokuapp.com/trip-duration`)
+      .get(`http://localhost:5000/trip-duration/${location}`)
       .then(response => {
-        console.log(response.data);
+        this.setState({ tripDuration: response.data.text });
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
@@ -24,7 +25,8 @@ class App extends Component {
     this.state = {
       pics: [],
       loading: true,
-      noResults: true
+      noResults: true,
+      tripDuration: String
     };
   }
   render() {
@@ -34,7 +36,13 @@ class App extends Component {
           <Route
             exact
             path={`/`}
-            render={() => <Home onTime={this.willIbeOnTime} />}
+            render={() => (
+              <Home
+                onTime={this.willIbeOnTime}
+                location={this.getLocation}
+                duration={this.state.tripDuration}
+              />
+            )}
           />
           <Route path={`/barbell`} render={() => <Barbell />} />
           {/* <Route component={RouteError} /> */}
