@@ -20,16 +20,17 @@ let morningClass = n => {
   d.setSeconds(0);
   return d;
 };
+
 class App extends Component {
   countdownToClass = now => {
     this.setState({
-      Five30ClassIs: Math.round(
+      Five30Class: Math.round(
         countdown(now, afternoonClass(5), countdown.MINUTES).value / 1000 / 60
       ),
-      Four30ClassIs: Math.round(
+      Four30Class: Math.round(
         countdown(now, afternoonClass(4), countdown.MINUTES).value / 1000 / 60
       ),
-      Six30ClassIs: Math.round(
+      Six30Class: Math.round(
         countdown(now, afternoonClass(6), countdown.MINUTES).value / 1000 / 60
       ),
       SixAMClass: Math.round(
@@ -40,6 +41,15 @@ class App extends Component {
       ),
       NineAMClass: Math.round(
         countdown(now, morningClass(9), countdown.MINUTES).value / 1000 / 60
+      ),
+      NoonClass: Math.round(
+        countdown(now, morningClass(12), countdown.MINUTES).value / 1000 / 60
+      ),
+      SatFirstClass: Math.round(
+        countdown(now, afternoonClass(-20), countdown.MINUTES).value / 1000 / 60
+      ),
+      SatSecondClass: Math.round(
+        countdown(now, morningClass(10), countdown.MINUTES).value / 1000 / 60
       )
     });
   };
@@ -72,12 +82,15 @@ class App extends Component {
                 location={this.getLocation}
                 duration={this.state.tripDuration}
                 nextClass={this.countdownToClass}
-                Five30ClassIs={this.state.Five30ClassIs}
-                Six30ClassIs={this.state.Six30ClassIs}
-                Four30ClassIs={this.state.Four30ClassIs}
-                SixAMClassIs={this.state.SixAMClassIs}
-                SevenAMClassIs={this.state.SevenAMClassIs}
-                NineAMClassIs={this.state.NineAMClassIs}
+                NoonClassIs={this.state.NoonClass}
+                Five30ClassIs={this.state.Five30Class}
+                Six30ClassIs={this.state.Six30Class}
+                Four30ClassIs={this.state.Four30Class}
+                SixAMClassIs={this.state.SixAMClass}
+                SevenAMClassIs={this.state.SevenAMClass}
+                NineAMClassIs={this.state.NineAMClass}
+                SatFirstClassIs={this.state.SatFirstClass}
+                SatSecondClassIs={this.state.SatSecondClass}
               />
             )}
           />
