@@ -4,19 +4,16 @@ import Home from "./Home.js";
 import RouteError from "./RouteError.js";
 import Barbell from "./Barbell.js";
 import axios from "axios";
+import apiKey from "./config.js";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-
-let apiKey = process.env.apiKei;
-
 class App extends Component {
   willIbeOnTime = () => {
     axios
-      .get(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=30+Bangor+Street+Warwick+RI&destination=859+North+Main+Street+Providence+RI&key=${apiKey}`
-      )
+      .get(`https://fullrange-server.herokuapp.com/trip-duration`)
       .then(response => {
-        console.log(response.routes.duration.text);
+        console.log(response.data);
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
