@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./Header.js";
 import countdown from "countdown";
+import FacebookProvider, { Page } from "react-facebook";
+
 let location;
 function getLocation() {
   if (navigator.geolocation) {
@@ -14,6 +16,7 @@ function getLocation() {
     console.log("Geolocation is not supported by this browser.");
   }
 }
+
 let today = () => {
   var d = new Date();
   var n = d.getDay();
@@ -40,13 +43,15 @@ class Home extends Component {
     return (
       <div>
         <Header />
-        <div className="container card-columns ml-auto mr-auto mt-5 row d-flex justify-content-between">
-          <div className="card col-lg-3 bg-dark   text-center">
-            <div className="card-body bg-dark text-white">
-              <h5 className="card-title">What Classes Can I Make It For?</h5>
+        <div className="container card-columns ml-auto mr-auto mt-5 row d-flex justify-content-between ">
+          <div className="card col-lg-3 bg-dark text-center " id="facebook">
+            <div className="card-body bg-dark text-white mb-5">
+              <h5 className="card-title mb-5">
+                What Classes Can I Make It For?
+              </h5>
               <form className="mb-3" onSubmit={this.handleSubmit}>
                 <button type="submit" className="btn btn-primary">
-                  Show Me!{" "}
+                  Show Me!
                 </button>
               </form>
               {(this.props.duration && this.state.today === 1) ||
@@ -169,36 +174,38 @@ class Home extends Component {
               ) : (
                 ""
               )}
+              {!this.props.duration ? (
+                <img
+                  class="card-img-bottom mt-5 rounded"
+                  src="/trafficLight.jpg"
+                  alt="lights"
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
-          <div className="card  col-lg-4  text-center">
-            <img
-              className="card-img-top img-fluid mt-2"
-              src="/samplePerson.jpg"
-              alt="Card  cap"
-            />
-            <div className="card-body">
-              <h5 className="card-title">3 Time Per Week Streek</h5>
-              <p className="card-text">
-                Naomi has been coming 3 times per week for 18 weeks!
-              </p>
-              <a href="dosomthing" className="btn btn-primary">
-                That's awesome!
-              </a>
-            </div>
+          <div className="card bg-dark  col-lg-4  text-center">
+            <FacebookProvider appId="502980866868802">
+              <Page
+                href="https://www.facebook.com/FullRangeCrossFit/?fb_dtsg_ag=AdwS_WIHC78zl6x8ZqEtUvm0rWfbAME0otphGaxU6Drgtw%3AAdz0CYgdDnHRAqJts48e7M0kmWwKlpzT3dKJ-y-qF1m5ZA"
+                tabs="timeline"
+                width="280"
+              />
+            </FacebookProvider>
           </div>
 
           <div className="card col-lg-3 bg-dark text-center">
             <div className="card-header bg-dark text-white">Recent PR's</div>
             <ul className="list-group list-group-flush ">
-              <li className="list-group-item">Kayla Zerva - Snatch</li>
-              <li className="list-group-item">Adam Molano - Squat</li>
-              <li className="list-group-item">Erica Larence - 500M Row</li>
-              <li className="list-group-item">Arron Wheeler - Push Press</li>
-              <li className="list-group-item">Sara Kemper - Fran</li>
-              <li className="list-group-item">Chelsea Boyd - Deadlift</li>
-              <li className="list-group-item">Al Moniz - Snatch</li>
-              <li className="list-group-item">Kate Schultz - RDL * 4</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
+              <li className="list-group-item">Coming Soon!</li>
             </ul>
           </div>
         </div>

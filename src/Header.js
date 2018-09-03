@@ -10,8 +10,8 @@ class Header extends Component {
         <div className="container">
           <ul className="nav navbar-nav mr-auto ml-md-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="/barbell">
-                Barbell
+              <a className="nav-link" href="https://fullrangecrossfit.com">
+                Main Site
               </a>
             </li>
           </ul>
@@ -30,8 +30,8 @@ class Header extends Component {
           </ul>
           <ul className="nav navbar-nav ml-auto mr-md-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/something">
-                Aerobic
+              <a className="nav-link" href="http://crossfit.com">
+                CrossFit
               </a>
             </li>
           </ul>
